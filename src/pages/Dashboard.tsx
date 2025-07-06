@@ -40,6 +40,7 @@ export function Dashboard() {
 
   const handleDelete = async(contentId:string)=>{
     await axios.delete(`${BACKEND_URL}/api/v1/content`,{
+      //@ts-ignore
       data:{contentId},
       withCredentials:true,
     });
@@ -60,7 +61,7 @@ export function Dashboard() {
         <Button onClick={() => setModalOpen(true)} variant="primary" text="Add content" startIcon={<PlusIcon />} />
         <Button
           onClick={async () => {
-            const response = await axios.put(`${BACKEND_URL}/api/v1/brain/share`, { share: true }, { withCredentials: true });
+            const response = await axios.put<{hash:string}>(`${BACKEND_URL}/api/v1/brain/share`, { share: true }, { withCredentials: true });
             const shareUrl = `http://localhost:5173/share/${response.data.hash}`;
             await navigator.clipboard.writeText(shareUrl);
           }}

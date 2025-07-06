@@ -1,5 +1,5 @@
 import { Delete } from "../icons/Delete";
-import { ShareIcon } from "../icons/ShareIcon";
+// import { ShareIcon } from "../icons/ShareIcon";
 
 
 interface CardProps{

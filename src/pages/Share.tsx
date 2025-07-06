@@ -22,8 +22,9 @@ export function Share(){
             setData(res.data);
             setLoading(false);
         }).catch((err)=>{
+            console.log(err);
             setError("Could not fetch shared brain");
-            setLoading(true);
+            setLoading(false);
         })
     },[shareId]);
     if(loading)return <div>Loading...</div>
@@ -38,6 +39,7 @@ export function Share(){
                     <div className="flex flex-wrap gap-6 justify-center">
                         {data.content.map((item: any) => (
                             <Card
+                                _id={item._id}
                                 key={item._id}
                                 type={item.type}
                                 link={item.link}
