@@ -1,2 +1,3 @@
-export const BACKEND_URL ="https://backend-brain-unvy.vercel.app"
+export const BACKEND_URL =import.meta.env.VITE_BACKEND_URL;
+
 
