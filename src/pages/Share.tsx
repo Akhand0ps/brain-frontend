@@ -12,21 +12,21 @@ export function Share(){
     const[error,setError] = useState<string | null>(null);
 
 
-    useEffect(()=>{
-        if(!shareId)return;
-        setLoading(true);
+        useEffect(()=>{
+            if(!shareId)return;
+            setLoading(true);
 
-        axios.get(`${BACKEND_URL}/api/v1/brain/${shareId}`,{
-            withCredentials:true
-        }).then((res)=>{
-            setData(res.data);
-            setLoading(false);
-        }).catch((err)=>{
-            console.log(err);
-            setError("Could not fetch shared brain");
-            setLoading(false);
-        })
-    },[shareId]);
+            axios.get(`${BACKEND_URL}/api/v1/brain/${shareId}`,{
+                withCredentials:true
+            }).then((res)=>{
+                setData(res.data);
+                setLoading(false);
+            }).catch((err)=>{
+                console.log(err);
+                setError("Could not fetch shared brain");
+                setLoading(false);
+            })
+        },[shareId]);
     if(loading)return <div>Loading...</div>
     if(error)return <div>{error}</div>
     return (

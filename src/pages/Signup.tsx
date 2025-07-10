@@ -17,19 +17,15 @@ export function Signup(){
        
 
     async function signup(){
-
         const firstName = firstnameRef.current?.value;
         const lastName = lastnameRef.current?.value;
         const email = emailRef.current?.value;
         const password = PasswordRef.current?.value;
-        
         await axios.post(BACKEND_URL +"/api/v1/register",{
-
             firstName,
             ...(lastName ? {lastName}:{}),
             email,
             password
-
         },{
            withCredentials:true
         })
